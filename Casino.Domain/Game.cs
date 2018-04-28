@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Casino.Domain
 {
@@ -160,7 +156,7 @@ namespace Casino.Domain
         {
             Casino.DTO.CasinoTable dataRow = new DTO.CasinoTable();
 
-            dataRow.RoundID = this.RoundCount;
+            dataRow.RoundId = this.RoundCount;
             dataRow.Pot = this.Player.Pot;
             dataRow.Bet = this.Player.Bet;
             dataRow.Reel1Symbol = this.GameSlotMachine.ReelsOfMachine[0].Face.symbolName;

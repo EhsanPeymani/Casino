@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.Data
 {
@@ -24,7 +21,7 @@ namespace Casino.Data
                 dtoData.Reel1Symbol = dbData.Reel1Symbol;
                 dtoData.Reel2Symbol = dbData.Reel2Symbol;
                 dtoData.Reel3Symbol = dbData.Reel3Symbol;
-                dtoData.RoundID = dbData.RoundID;
+                dtoData.RoundId = dbData.RoundID;
                 dtoData.Status = dbData.Status;
 
                 dtoTable.Add(dtoData);
@@ -41,7 +38,7 @@ namespace Casino.Data
 
             Data.CasinoTable dbData = new Data.CasinoTable();
 
-            dbData.RoundID = newDataRow.RoundID;
+            dbData.RoundID = newDataRow.RoundId;
             dbData.Pot = newDataRow.Pot;
             dbData.Bet = newDataRow.Bet;
             dbData.Reel1Symbol = newDataRow.Reel1Symbol;
