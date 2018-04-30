@@ -16,7 +16,7 @@ namespace Casino.Domain
 
             for (int i = 0; i < numberOfReels; i++)
             {
-                ReelsOfMachine[i] = new Reels(this.RndSlotMachine.Next(12));
+                this.ReelsOfMachine[i] = new Reels(this.RndSlotMachine.Next(12));
             }
         }
 
@@ -24,6 +24,8 @@ namespace Casino.Domain
         {
             for (int i = 0; i < this.ReelsNumber; i++)
             {
+                // we have 12 possibility for each reel. It is hard coded.
+                // the better solution is to have it as a variable in userSettings in web.config
                 ReelsOfMachine[i] = new Reels(this.RndSlotMachine.Next(12));
             }
         }

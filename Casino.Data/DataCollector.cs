@@ -5,16 +5,16 @@ namespace Casino.Data
 {
     public class DataCollector
     {
-        public static List<Casino.DTO.CasinoTable> GetDatabase()
+        public static List<DTO.CasinoTable> GetDatabase()
         {
-            GameDatabaseEntities db = new GameDatabaseEntities();
+            var db = new GameDatabaseEntities();
             var dbTable = db.CasinoTables.ToList();
 
-            List<Casino.DTO.CasinoTable> dtoTable = new List<DTO.CasinoTable>();
+            var dtoTable = new List<DTO.CasinoTable>();
 
             foreach (var dbData in dbTable)
             {
-                var dtoData = new Casino.DTO.CasinoTable();
+                var dtoData = new DTO.CasinoTable();
 
                 dtoData.Bet = dbData.Bet;
                 dtoData.Pot = dbData.Pot;
@@ -33,10 +33,10 @@ namespace Casino.Data
 
         public static void AddToDatabase(DTO.CasinoTable newDataRow)
         {
-            GameDatabaseEntities db = new GameDatabaseEntities();
+            var db = new GameDatabaseEntities();
             var dbTable = db.CasinoTables;
 
-            Data.CasinoTable dbData = new Data.CasinoTable();
+            var dbData = new Data.CasinoTable();
 
             dbData.RoundID = newDataRow.RoundId;
             dbData.Pot = newDataRow.Pot;
@@ -52,7 +52,7 @@ namespace Casino.Data
 
         public static void ClearDatabase()
         {
-            GameDatabaseEntities db = new GameDatabaseEntities();
+            var db = new GameDatabaseEntities();
             var dbTable = db.CasinoTables;
 
             dbTable.RemoveRange(dbTable.Where(p => p.RoundID != -1));

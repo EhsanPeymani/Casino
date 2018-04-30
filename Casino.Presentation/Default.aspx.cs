@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Casino.Domain;
+using System;
 using System.Globalization;
 
 namespace Casino.Presentation
@@ -7,12 +8,13 @@ namespace Casino.Presentation
     {
         Domain.Game casinoGame;
         public CultureInfo USA = new CultureInfo("en-US");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             
             if (!Page.IsPostBack)
             {
-                casinoGame = new Domain.Game();
+                casinoGame = new Game();
                 Session["Game"] = casinoGame;
 
                 betTextBox.Text = casinoGame.Player.Bet.ToString("c", USA);
@@ -26,7 +28,7 @@ namespace Casino.Presentation
 
         protected void leverButton_Click(object sender, EventArgs e)
         {
-            casinoGame = (Domain.Game) Session["Game"];
+            casinoGame = (Game) Session["Game"];
             dbGridView.Visible = false;
             betTextBox.Text = Display.FormatBet((int)double.Parse(betTextBox.Text, NumberStyles.Currency, USA), USA);
             casinoGame.PlayRound((int)double.Parse(betTextBox.Text, NumberStyles.Currency, USA));
@@ -46,7 +48,7 @@ namespace Casino.Presentation
 
         protected void showDBButton_Click(object sender, EventArgs e)
         {
-            var gameTableList = Casino.Domain.Game.GetDatabase();
+            var gameTableList = Game.GetDatabase();
             dbGridView.Visible = true;
             dbGridView.DataSource = gameTableList;
             dbGridView.DataBind();
@@ -54,7 +56,7 @@ namespace Casino.Presentation
 
         protected void refillButton_Click(object sender, EventArgs e)
         {
-            casinoGame = (Domain.Game)Session["Game"];
+            casinoGame = (Game)Session["Game"];
             casinoGame.Refill();
             playersMoneyLabel.Text = casinoGame.Player.Pot.ToString("c", USA);
             Session["Game"] = casinoGame;

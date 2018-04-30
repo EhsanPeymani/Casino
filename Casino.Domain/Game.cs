@@ -17,8 +17,8 @@ namespace Casino.Domain
 
         public Game()
         {
-            Player = new Players();
-            GameSlotMachine = new SlotMachine(3);
+            this.Player = new Players();
+            this.GameSlotMachine = new SlotMachine(3);
             this.MoneyMultiplier = 0;
             this.Status = GameStatus.Lose;
             this.RoundCount = 0;
@@ -125,6 +125,7 @@ namespace Casino.Domain
             this.Player.Bet = newBet;
         }
 
+        // returns true if the player's pot is greater or equal to the player's bet or the pot is positive. 
         private bool CanPlayerPlay()
         {
             if (this.Player.Bet > this.Player.Pot || this.Player.Pot <= 0)
@@ -149,12 +150,12 @@ namespace Casino.Domain
 
         private void UpdateDatabase()
         {
-            Casino.Data.DataCollector.AddToDatabase(BuildDataTransferObject());
+            Data.DataCollector.AddToDatabase(BuildDataTransferObject());
         }
 
-        private Casino.DTO.CasinoTable BuildDataTransferObject()
+        private DTO.CasinoTable BuildDataTransferObject()
         {
-            Casino.DTO.CasinoTable dataRow = new DTO.CasinoTable();
+            var dataRow = new DTO.CasinoTable();
 
             dataRow.RoundId = this.RoundCount;
             dataRow.Pot = this.Player.Pot;
