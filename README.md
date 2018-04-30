@@ -7,7 +7,11 @@ The possible outcome of each reel is based on the images in /Casino.Presentation
 I have worked more than specified on DevU.com to experience more. For example, adding a database for the results, or styling by CSS. 
 
 ## Code Architecture
-I followed an object oriented programming. The architecture is layered in 3 layers: Data, Domain and Presentation.
+I followed an object oriented programming. 
+
+[![architecture.png](https://s18.postimg.cc/yf46jocnd/architecture.png)](https://postimg.cc/image/x02luybk5/)
+
+The architecture is layered in 3 layers: Data, Domain and Presentation.
 The code has the following objects:
 - Player
 - Reels
